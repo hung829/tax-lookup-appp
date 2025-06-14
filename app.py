@@ -21,7 +21,7 @@ if not st.session_state.logged_in:
             st.session_state.logged_in = True
             st.session_state.username = username
             st.success("✅ Đăng nhập thành công!")
-            st.experimental_rerun()  # Tải lại để chuyển sang giao diện tra cứu
+            st.rerun()
         else:
             st.error("❌ Sai tên đăng nhập hoặc mật khẩu.")
 else:
