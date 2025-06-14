@@ -1,17 +1,8 @@
-# app.py
-import streamlit as st
-from users import users
-from tax_data import tax_records
-
-st.set_page_config(page_title="Tra cứu Thuế", layout="centered")
-
-# Trang đăng nhập
-st.title("🔐 Đăng nhập hệ thống tra cứu thuế")
-
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 if not st.session_state.logged_in:
+    # Giao diện đăng nhập
     username = st.text_input("Tên đăng nhập")
     password = st.text_input("Mật khẩu", type="password")
 
@@ -22,7 +13,8 @@ if not st.session_state.logged_in:
         else:
             st.error("Sai tên đăng nhập hoặc mật khẩu")
 else:
-    st.success(f"Xin chào {username}! 👋")
+    # Giao diện sau khi đăng nhập: TRA CỨU
+    st.success(f"Xin chào {username} 👋")
     st.subheader("🔍 Nhập mã số thuế để tra cứu:")
 
     tax_id = st.text_input("Mã số thuế")
@@ -34,4 +26,4 @@ else:
             for key, value in info.items():
                 st.write(f"**{key}:** {value}")
         else:
-            st.warning("⚠️ Không tìm thấy mã số thuế này.")
+            st.warning("⚠️ Không tìm thấy mã số thuế.")
